@@ -26,13 +26,6 @@ has_postgres() {
 
 echo "---"
 
-if has_postgres $BUILD_DIR; then
-  cat <<EOF
-addons:
-  - heroku-postgresql
-EOF
-fi
-
 if [ ! -f $BUILD_DIR/Procfile ] && [ -d $BUILD_DIR/target ]; then
   cd $BUILD_DIR
   for jarFile in $(find target -maxdepth 1 -name "*.jar" -type f); do
